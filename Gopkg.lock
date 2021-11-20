@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  digest = "1:e3b25b60c5598d88c45b25d85a76816d0a81fc3fd46c00791136614c1183fc0b"
+  name = "github.com/go-sql-driver/mysql"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "bcc459a906419e2890a50fc2c99ea6dd927a88f2"
+  version = "v1.6.0"
+
+[[projects]]
   digest = "1:4b18343353e492fa08a796ba5da7f27226ed97b9fd09593ee0ba82d5e7260e7f"
   name = "github.com/labstack/echo"
   packages = ["."]
@@ -125,6 +133,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/go-sql-driver/mysql",
     "github.com/labstack/echo",
     "github.com/tkanos/gonfig",
   ]
