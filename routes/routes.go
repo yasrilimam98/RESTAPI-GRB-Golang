@@ -21,6 +21,7 @@ func Init() *echo.Echo {
 	e.DELETE("/karyawan",controllers.DeleteKaryawan)
 
 	e.GET("/generate-hash/:password", controllers.GenerateHashPassword)
+	e.POST("/login",controllers.CheckLogin)
 	
 	return e
 }
