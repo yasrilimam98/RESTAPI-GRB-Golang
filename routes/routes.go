@@ -19,5 +19,8 @@ func Init() *echo.Echo {
 	e.POST("/karyawan", controllers.StoreKaryawan)
 	e.PUT("/karyawan", controllers.UpdateKaryawan)
 	e.DELETE("/karyawan",controllers.DeleteKaryawan)
+
+	e.GET("/generate-hash/:password", controllers.GenerateHashPassword)
+	
 	return e
 }
