@@ -1,10 +1,14 @@
 package main
 
-import "github/yasrilimam98/grb-restapi/routes"
-
-
+import (
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/yasrilimam98/grb-restapi/database"
+	"github.com/yasrilimam98/grb-restapi/routes"
+)
 
 func main() {
-	e:= routes.Init()
+
+	database.Init()
+	e := routes.Init()
 	e.Logger.Fatal(e.Start(":5000"))
 }
