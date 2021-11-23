@@ -8,7 +8,8 @@ import (
 
 func main() {
 
-	database.Init()
+	database.Initdb1()
+	database.Initdb2()
 	e := routes.Init()
 	e.Logger.Fatal(e.Start(":5000"))
 }

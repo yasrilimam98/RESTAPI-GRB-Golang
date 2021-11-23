@@ -18,7 +18,7 @@ func CheckLogin(username, password string) (bool, error) {
 	var obj User
 	var pwd string
 
-	con := database.CreateCon()
+	con := database.CreateCondb2()
 
 	sqlStatement := "SELECT * FROM users WHERE username = ?"
 

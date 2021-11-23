@@ -6,19 +6,27 @@ import (
 	"github.com/yasrilimam98/grb-restapi/database"
 )
 
-type Karyawan struct {
+type Users struct {
+	// Id                int       `json:"id"`
+	// Nama              string    `json:"name`
+	// Email             string    `json:"email"`
+	// Email_verified_at time.Time `json:"email_verified_at"`
+	// Password          string    `json:"password`
+	// Remember_token    string    `json:"remember_token"`
+	// Created_at        time.Time `json:"created_at"`
+	// Updated_at        time.Time `json:"updated_at"`
 	Id      int    `json:"id"`
 	Nama    string `json:"nama`
 	Alamat  string `json:"alamat"`
 	Telepon string `json:"telepon"`
 }
 
-func FetchAllKaryawan() (Response, error) {
-	var obj Karyawan
-	var arrobj []Karyawan
+func FetchAllUsers() (Response, error) {
+	var obj Users
+	var arrobj []Users
 	var res Response
 
-	con := database.CreateCon()
+	con := database.CreateCondb1()
 
 	sqlStatement := "SELECT * FROM dt_karyawan"
 
@@ -41,7 +49,7 @@ func FetchAllKaryawan() (Response, error) {
 	return res, nil
 }
 
-func StoreKaryawan(nama string, alamat string, telepon string) (Response, error) {
+func StoreUsers(nama string, alamat string, telepon string) (Response, error) {
 	var res Response
 
 	// v := validator.New()
@@ -57,8 +65,9 @@ func StoreKaryawan(nama string, alamat string, telepon string) (Response, error)
 	// 	return res, err
 	// }
 
-	con := database.CreateCon()
+	con := database.CreateCondb1()
 
+	// sqlStatement := "INSERT users (name, email, email_verified_at, password, remember_token, created_at, update_at ) VALUES (?, ?, ?)"
 	sqlStatement := "INSERT dt_karyawan (nama, alamat, telepon) VALUES (?, ?, ?)"
 
 	stmt, err := con.Prepare(sqlStatement)
@@ -85,11 +94,12 @@ func StoreKaryawan(nama string, alamat string, telepon string) (Response, error)
 	return res, nil
 }
 
-func UpdateKaryawan(id int, nama string, alamat string, telepon string) (Response, error) {
+func UpdateUsers(id int, nama string, alamat string, telepon string) (Response, error) {
 	var res Response
 
-	con := database.CreateCon()
+	con := database.CreateCondb1()
 
+	// sqlStatement := "UPDATE users SET name = ?, email = ?, email_verified_at = ?, password = ?, remember_token = ?, created_at = ?, updated_at = ? WHERE id = ?"
 	sqlStatement := "UPDATE dt_karyawan SET nama = ?, alamat = ?, telepon = ? WHERE id = ?"
 
 	stmt, err := con.Prepare(sqlStatement)
@@ -116,12 +126,12 @@ func UpdateKaryawan(id int, nama string, alamat string, telepon string) (Respons
 	return res, nil
 }
 
-func DeleteKaryawan(id int) (Response, error) {
+func DeleteUsers(id int) (Response, error) {
 	var res Response
 
-	con := database.CreateCon()
+	con := database.CreateCondb1()
 
-	sqlStatement := "DELETE FROM dt_karyawan WHERE id = ?"
+	sqlStatement := "DELETE FROM users WHERE id = ?"
 
 	stmt, err := con.Prepare(sqlStatement)
 	if err != nil {

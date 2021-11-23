@@ -12,16 +12,20 @@ func Init() *echo.Echo {
 
 	e := echo.New()
 	// c echo context untuk mengakses request or respon dan error untuk notif ketika jadi kesalahan
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello Word!!!")
+	e.GET("/database1", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Database Connection 1")
 	})
-	e.GET("/karyawan", controllers.FetchAllKaryawan)
-	e.POST("/karyawan", controllers.StoreKaryawan)
-	e.PUT("/karyawan", controllers.UpdateKaryawan)
-	e.DELETE("/karyawan",controllers.DeleteKaryawan)
+	e.GET("/database2", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Database Connection 2")
+	})
+
+	e.GET("/users", controllers.FetchAllUsers)
+	e.POST("/users", controllers.StoreUsers)
+	e.PUT("/users", controllers.UpdateUsers)
+	e.DELETE("/users", controllers.DeleteUsers)
 
 	e.GET("/generate-hash/:password", controllers.GenerateHashPassword)
-	e.POST("/login",controllers.CheckLogin)
-	
+	e.POST("/login", controllers.CheckLogin)
+
 	return e
 }

@@ -8,8 +8,8 @@ import (
 	"github.com/yasrilimam98/grb-restapi/models"
 )
 
-func FetchAllKaryawan(c echo.Context) error {
-	result, err := models.FetchAllKaryawan()
+func FetchAllUsers(c echo.Context) error {
+	result, err := models.FetchAllUsers()
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
@@ -17,12 +17,20 @@ func FetchAllKaryawan(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-func StoreKaryawan(c echo.Context) error {
+func StoreUsers(c echo.Context) error {
+	// name := c.FormValue("name")
+	// email := c.FormValue("email")
+	// email_verified_at := c.FormValue("email_verified_at")
+	// password := c.FormValue("password")
+	// remember_token := c.FormValue("remember_token")
+	// created_at := c.FormValue("created_at")
+	// updated_at := c.FormValue("updated_at")
+
 	nama := c.FormValue("nama")
 	alamat := c.FormValue("alamat")
 	telepon := c.FormValue("telepon")
 
-	result, err := models.StoreKaryawan(nama, alamat, telepon)
+	result, err := models.StoreUsers(nama, alamat, telepon)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
@@ -30,7 +38,16 @@ func StoreKaryawan(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-func UpdateKaryawan(c echo.Context) error {
+func UpdateUsers(c echo.Context) error {
+	// id := c.FormValue("id")
+	// name := c.FormValue("name")
+	// email := c.FormValue("email")
+	// email_verified_at := c.FormValue("email_verified_at")
+	// password := c.FormValue("password")
+	// remember_token := c.FormValue("remember_token")
+	// created_at := c.FormValue("created_at")
+	// updated_at := c.FormValue("updated_at")
+
 	id := c.FormValue("id")
 	nama := c.FormValue("nama")
 	alamat := c.FormValue("alamat")
@@ -42,7 +59,7 @@ func UpdateKaryawan(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
-	result, err := models.UpdateKaryawan(conv_id, nama, alamat, telepon)
+	result, err := models.UpdateUsers(conv_id, nama, alamat, telepon)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
@@ -50,7 +67,7 @@ func UpdateKaryawan(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-func DeleteKaryawan(c echo.Context) error {
+func DeleteUsers(c echo.Context) error {
 	id := c.FormValue("id")
 
 	conv_id, err := strconv.Atoi(id)
@@ -58,7 +75,7 @@ func DeleteKaryawan(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
-	result, err := models.DeleteKaryawan(conv_id)
+	result, err := models.DeleteUsers(conv_id)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
