@@ -10,8 +10,10 @@ import (
 
 func Init() *echo.Echo {
 
-	e := echo.New()
 	// c echo context untuk mengakses request or respon dan error untuk notif ketika jadi kesalahan
+	e := echo.New()
+
+	// Cek connection database
 	e.GET("/database1", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Database Connection 1")
 	})
@@ -19,10 +21,18 @@ func Init() *echo.Echo {
 		return c.String(http.StatusOK, "Database Connection 2")
 	})
 
+	// Database 1 table users routes
 	e.GET("/users", controllers.FetchAllUsers)
 	e.POST("/users", controllers.StoreUsers)
 	e.PUT("/users", controllers.UpdateUsers)
 	e.DELETE("/users", controllers.DeleteUsers)
+
+	// ================BATAS=================== 
+
+	// Database 2 table mclient routes
+	e.GET("/client", controllers.FetchAllClient)
+
+	// ================BATAS=================== 
 
 	e.GET("/generate-hash/:password", controllers.GenerateHashPassword)
 	e.POST("/login", controllers.CheckLogin)
