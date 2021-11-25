@@ -5,3 +5,9 @@ type Response struct {
 	Message string	`json:"message"`
 	Data interface{}	`json:"data"`
 }
+
+// type response struct {
+// 	Status bool
+// 	Pesan  string
+// 	Data   []Client
+// }
