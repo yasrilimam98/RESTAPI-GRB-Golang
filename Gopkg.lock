@@ -18,31 +18,36 @@
   version = "v1.6.0"
 
 [[projects]]
-  digest = "1:4b18343353e492fa08a796ba5da7f27226ed97b9fd09593ee0ba82d5e7260e7f"
+  digest = "1:efd601ad1d1189884f37ed075fadb5bbd17f1f5acf5862827247c6da56d125ba"
   name = "github.com/labstack/echo"
-  packages = ["."]
+  packages = [
+    ".",
+    "middleware",
+  ]
   pruneopts = "UT"
-  revision = "c6f0c667f145b5e5347ba812c9de5a5a4280bac5"
-  version = "v4.6.1"
+  revision = "38772c686c76b501f94bd6cd5b77f5842e93b559"
+  version = "v3.3.10"
 
 [[projects]]
-  digest = "1:9bc108827ac1d8783dea294f1ef07732fa4ca7d6e20518c04888a85828eba4ce"
+  digest = "1:e8e65826d60fd82637fb9df06ecd651191b599f4a8f72b86362012f288778320"
   name = "github.com/labstack/gommon"
   packages = [
+    "bytes",
     "color",
     "log",
+    "random",
   ]
   pruneopts = "UT"
   revision = "8c098ec745a2e2f9d05aaa55feb380724e9f60a1"
   version = "v0.3.1"
 
 [[projects]]
-  digest = "1:36f770f8b6ecc1221df059623824924a905ebc26b8abc669e2ac4a07cfa3d022"
+  digest = "1:bfd19f00967e10367aaaf4b09545873750ac3cb9762d66243e9b7954327cc113"
   name = "github.com/mattn/go-colorable"
   packages = ["."]
   pruneopts = "UT"
-  revision = "77502a542eb81f2384260b993b3b4c8e6c195207"
-  version = "v0.1.11"
+  revision = "e1bb79c8d53c38a60962ad4b8f658226cc983710"
+  version = "v0.1.12"
 
 [[projects]]
   digest = "1:e66bb4fe1fb8b48e9bed410b198498cef8fa6701a5e3eb0ee7f07b74153a7fbc"
@@ -91,17 +96,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:b22b8fab4f63e211fe2a203db52901d5345acc6129a51d81d31fc2184d4a592f"
+  digest = "1:6bd1107fe417ce449104c2dedc302799e203cd16c9621b2f4de25b6250465ad5"
   name = "golang.org/x/net"
-  packages = [
-    "http/httpguts",
-    "http2",
-    "http2/h2c",
-    "http2/hpack",
-    "idna",
-  ]
+  packages = ["idna"]
   pruneopts = "UT"
-  revision = "6a13c67c3ce400be1b91076053a994c2d1ebf01b"
+  revision = "d83791d6bcd9ec2bdaacd08f4da4718370382c74"
 
 [[projects]]
   branch = "master"
@@ -112,7 +111,7 @@
     "unix",
   ]
   pruneopts = "UT"
-  revision = "dee7805ff2e13b1c4206de89b1c06e95ab66ae0d"
+  revision = "fe61309f888157de161a48facf03d9412635cffe"
 
 [[projects]]
   digest = "1:c9f99de7a59710d6160060a62e92e3c2899174af0b60cc8f4188eb98a5a0d1e6"
@@ -143,9 +142,9 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/dgrijalva/jwt-go",
     "github.com/go-sql-driver/mysql",
     "github.com/labstack/echo",
+    "github.com/labstack/echo/middleware",
     "github.com/tkanos/gonfig",
     "golang.org/x/crypto/bcrypt",
   ]

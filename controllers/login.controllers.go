@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-
 	"github.com/yasrilimam98/grb-restapi/models"
 
 	"github.com/labstack/echo"
@@ -13,10 +12,10 @@ import (
 )
 
 func CheckLogin(c echo.Context) error {
-	username := c.FormValue("username")
+	email := c.FormValue("email")
 	password := c.FormValue("password")
 
-	res, err := models.CheckLogin(username, password)
+	res, err := models.CheckLogin(email, password)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{
 			"messages": err.Error(),
@@ -27,15 +26,14 @@ func CheckLogin(c echo.Context) error {
 		return echo.ErrUnauthorized
 	}
 
-	// return c.String(http.StatusOK,"Berhasil Login")
-	
-	
+	// return c.String(http.StatusOK, "Berhasil Login")
+
 	// Generate Token
 
 	token := jwt.New(jwt.SigningMethodHS256)
 
 	claims := token.Claims.(jwt.MapClaims)
-	claims["username"] = username
+	claims["email"] = email
 	claims["level"] = "application"
 	claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
@@ -49,7 +47,7 @@ func CheckLogin(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]string{
 		"token": t,
 	})
- 
+
 }
 
 func GenerateHashPassword(c echo.Context) error {

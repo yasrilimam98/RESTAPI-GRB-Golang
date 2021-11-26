@@ -126,7 +126,6 @@ func UpdateUsers(id int, nama string, alamat string, telepon string) (Response, 
 	return res, nil
 }
 
-
 func DeleteUsers(id int) (Response, error) {
 	var res Response
 

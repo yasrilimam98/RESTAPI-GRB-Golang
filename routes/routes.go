@@ -6,6 +6,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/yasrilimam98/grb-restapi/controllers"
+	"github.com/yasrilimam98/grb-restapi/middleware"
 )
 
 func Init() *echo.Echo {
@@ -27,12 +28,12 @@ func Init() *echo.Echo {
 	e.PUT("/users", controllers.UpdateUsers)
 	e.DELETE("/users", controllers.DeleteUsers)
 
-	// ================BATAS=================== 
+	// ================BATAS===================
 
 	// Database 2 table mclient routes
-	e.GET("/client", controllers.FetchAllClient)
+	e.GET("/client", controllers.FetchAllClient, middleware.IsAuthenticated)
 
-	// ================BATAS=================== 
+	// ================BATAS===================
 
 	e.GET("/generate-hash/:password", controllers.GenerateHashPassword)
 	e.POST("/login", controllers.CheckLogin)

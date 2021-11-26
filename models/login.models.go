@@ -10,26 +10,24 @@ import (
 )
 
 type User struct {
-	Id       int    `json:"id"`
-	Username string `json:"username"`
+	Id    int    `json:"id"`
+	Email string `json:"email"`
 }
 
-func CheckLogin(username, password string) (bool, error) {
+func CheckLogin(email, password string) (bool, error) {
 	var obj User
 	var pwd string
 
-	con := database.CreateCondb2()
+	con := database.CreateCondb1()
 
-	sqlStatement := "SELECT * FROM users WHERE username = ?"
-
-	err := con.QueryRow(sqlStatement, username).Scan(
-		&obj.Id, &obj.Username, &pwd,
+	err := con.QueryRow("SELECT id,email,password FROM cms_users WHERE email = ?", email).Scan(
+		&obj.Id, &obj.Email, &pwd,
 	)
 
 	// Cek baris null atau ada
 
 	if err == sql.ErrNoRows {
-		fmt.Println("Username not found")
+		fmt.Println("Email Anda salah!")
 		return false, err
 	}
 
@@ -42,7 +40,7 @@ func CheckLogin(username, password string) (bool, error) {
 
 	match, err := helpers.CheckPasswordHash(password, pwd)
 	if !match {
-		fmt.Println("Hash and password doesn't match.")
+		fmt.Println("Password Anda salah!")
 		return false, err
 	}
 
