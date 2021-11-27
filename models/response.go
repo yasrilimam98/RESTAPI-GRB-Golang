@@ -6,8 +6,3 @@ type Response struct {
 	Data interface{}	`json:"data"`
 }
 
-// type response struct {
-// 	Status bool
-// 	Pesan  string
-// 	Data   []Client
-// }
